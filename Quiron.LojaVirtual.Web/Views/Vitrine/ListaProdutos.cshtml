@@ -8,20 +8,16 @@
 
 <h2>ListaProdutos</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 
 
-@foreach (var p in Model.Produtos) {
-    <div>
-        <h3>@p.Nome</h3>
-        @p.Descricao
-        <h3>@p.Preco.ToString("c")</h3>
-    </div>
-
+@foreach (var p in Model.Produtos)
+{
+    @Html.Partial("ProdutoDetalhes", p)
 }
 
-@Html.PageLinks(Model.Paginacao, x => Url.Action("ListaProdutos", new {pagina = x }))
+<div class="btn-group pull-right">
+    @Html.PageLinks(Model.Paginacao, x => Url.Action("ListaProdutos", new { pagina = x }))
+</div>
+
 
 

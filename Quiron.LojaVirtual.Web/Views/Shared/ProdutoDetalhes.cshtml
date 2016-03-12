@@ -1,0 +1,11 @@
+﻿@model Quiron.LojaVirtual.Dominio.Entidades.Produto
+
+@{
+    ViewBag.Title = "ProdutosDetalhes";
+}
+
+<div class="well">
+    <h3><strong>@Model.Nome</strong></h3>
+    <h3><span class="pull-right left label label-primary">@Model.Preco.ToString("c")</span></h3>
+    <span class="lead">@Model.Descricao</span>
+</div>
