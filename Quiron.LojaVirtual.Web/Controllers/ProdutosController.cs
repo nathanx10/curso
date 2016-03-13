@@ -1,4 +1,6 @@
-﻿using Quiron.LojaVirtual.Dominio.Repositorio;
+﻿using Quiron.LojaVirtual.Dominio.Entidades;
+using Quiron.LojaVirtual.Dominio.Repositorio;
+using Quiron.LojaVirtual.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
