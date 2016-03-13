@@ -30,7 +30,7 @@ namespace Quiron.LojaVirtual.Dominio.Entidades
         }
 
         // Remover item
-        public void RemevorItem(Produto produto)
+        public void RemoverItem(Produto produto)
         {
             _itemCarrinho.RemoveAll(l => l.Produto.ProdutoId == produto.ProdutoId);
         }
