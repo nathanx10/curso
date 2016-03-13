@@ -12,7 +12,8 @@
     {
         <div class="pull-right">
             @Html.HiddenFor(x => x.ProdutoId)
-            @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+            @Html.Hidden("returnUrl", Request.Url.PathAndQuery) @*retorna a url atual*@ 
+
 
             <input type="submit" class="btn btn-success" value="Comprar" />
         </div>

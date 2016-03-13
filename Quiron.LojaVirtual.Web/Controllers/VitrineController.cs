@@ -17,8 +17,6 @@ namespace Quiron.LojaVirtual.Web.Controllers
         {
             _repositorio = new ProdutosRepositorio();
 
-            
-
             ProdutosViewModel model = new ProdutosViewModel 
             {
                 Produtos = _repositorio.Produtos
@@ -36,8 +34,6 @@ namespace Quiron.LojaVirtual.Web.Controllers
 
                 CategoriaAtual = categoria
             };
-
-            
 
             return View(model);
         }
