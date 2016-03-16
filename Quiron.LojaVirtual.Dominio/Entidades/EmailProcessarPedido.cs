@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Quiron.LojaVirtual.Dominio.Entidades
 {
-    public class EmailProcessarPedido
+    public class EmailPedido
     {
         private readonly EmailConfiguracoes _emailConfiguracoes;
 
-        public EmailProcessarPedido(EmailConfiguracoes emailConfiguracoes)
+        public EmailPedido(EmailConfiguracoes emailConfiguracoes)
         {
             _emailConfiguracoes = emailConfiguracoes;
         }
