@@ -107,7 +107,6 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Areas\Administrativo\Views\web.config" />
     <Content Include="Areas\Administrativo\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Administrativo\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Administrativo\Views\Shared\_AdministrativoLayout.cshtml" />
     <Content Include="Areas\Administrativo\Views\Produto\Index.cshtml" />
     <Content Include="Areas\Administrativo\Views\Produto\Alterar.cshtml" />
