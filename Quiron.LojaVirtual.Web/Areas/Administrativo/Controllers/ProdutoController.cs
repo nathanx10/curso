@@ -24,6 +24,8 @@ namespace Quiron.LojaVirtual.Web.Areas.Administrativo.Controllers
             Produto produto = _repositorio.Produtos
                 .FirstOrDefault(p=>p.ProdutoId == produtoId);
 
+            TempData["acao"] = "Alterar produto";
+
             return View(produto);
         }
 
@@ -40,6 +42,40 @@ namespace Quiron.LojaVirtual.Web.Areas.Administrativo.Controllers
                 return RedirectToAction("Index");
             }
             return View(produto);
+        }
+
+        public ViewResult NovoProduto()
+        {
+            TempData["acao"] = "Adicionar novo produto";
+            return View("Alterar", new Produto());
+        }
+
+        [HttpPost]
+        public ActionResult NovoProduto(Produto produto)
+        {
+            if (ModelState.IsValid)
+            {
+                _repositorio = new ProdutosRepositorio();
+                _repositorio.Salvar(produto);
+
+                TempData["mensagem"] = string.Format("{0} foi adicionado com sucesso", produto.Nome);
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult Excluir(int produtoId)
+        {
+            _repositorio = new ProdutosRepositorio();
+            Produto prod = _repositorio.Excluir(produtoId);
+
+            if(prod != null)
+            {
+                TempData["mensagem"] = string.Format("{0} foi excluido com sucesso", prod.Nome);
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }
