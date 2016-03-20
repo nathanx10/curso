@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Quiron.LojaVirtual.Dominio.Entidades
 {
-    public class Administradores
+    public class Administrador
     {
         [Key]
         public int Id { get; set; }
