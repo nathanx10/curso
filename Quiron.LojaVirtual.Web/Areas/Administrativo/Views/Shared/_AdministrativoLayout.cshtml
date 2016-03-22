@@ -22,6 +22,17 @@
         {
             <div class="alert alert-success" id="mensagem">@TempData["mensagem"]</div>
         }
+        
+        @if (Request.IsAuthenticated)
+        {
+            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                <i class="icon-user">
+                </i>Olá, @User.Identity.Name<span class="caret"></span>
+            </a>
+
+            @Html.ActionLink("Sair", "Logoff", new { area = "", controller = "Autenticacao" })
+
+        }
 
         @RenderBody()
 

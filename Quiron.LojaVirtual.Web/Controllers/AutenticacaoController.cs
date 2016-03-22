@@ -43,7 +43,7 @@ namespace Quiron.LojaVirtual.Web.Controllers
                             && returnUrl.StartsWith("/")
                             && !returnUrl.StartsWith("//")
                             && !returnUrl.StartsWith("/\\"))
-
+                        
                             return Redirect(returnUrl);
                     }
                 }
@@ -52,9 +52,16 @@ namespace Quiron.LojaVirtual.Web.Controllers
                     ModelState.AddModelError("","Usuário não localizado");
                 }
             }
-            
 
-            return View();
+            ViewBag.ReturnUrl = returnUrl;
+            return View(new Administrador());
         }
+
+        public ActionResult Logoff() 
+        { 
+            FormsAuthentication.SignOut(); 
+            return RedirectToAction("ListaProdutos", "Vitrine"); 
+        } 
+
     }
 }
