@@ -13,7 +13,7 @@ namespace Quiron.LojaVirtual.Dominio.Repositorio
 
         public Administrador ObterAdministrador(Administrador administrador)
         {
-            return _context.Administradores.FirstOrDefault(a => a.Login == administrador.Login && a.Senha == administrador.Senha);
+            return _context.Administradores.FirstOrDefault(a => a.Login == administrador.Login);
         }
     }
 }
