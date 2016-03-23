@@ -36,6 +36,8 @@ namespace Quiron.LojaVirtual.Dominio.Repositorio
                     prod.Descricao = produto.Descricao;
                     prod.Categoria = produto.Categoria;
                     prod.Preco = produto.Preco;
+                    prod.Imagem = produto.Imagem;
+                    prod.ImagemMimeType = produto.ImagemMimeType;
                 }
             }
 

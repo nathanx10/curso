@@ -24,15 +24,15 @@ namespace Quiron.LojaVirtual.Web.Controllers
         {
             _repositorio = new AdministradoresRepositorio();
 
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 Administrador admin = _repositorio.ObterAdministrador(administrador);
 
-                if(admin != null)
+                if (admin != null)
                 {
-                    if(!Equals(administrador.Senha, admin.Senha))
+                    if (!Equals(administrador.Senha, admin.Senha))
                     {
-                        ModelState.AddModelError("","Senha nao confere");
+                        ModelState.AddModelError("", "Senha nao confere");
                     }
                     else
                     {
@@ -43,13 +43,15 @@ namespace Quiron.LojaVirtual.Web.Controllers
                             && returnUrl.StartsWith("/")
                             && !returnUrl.StartsWith("//")
                             && !returnUrl.StartsWith("/\\"))
-                        
+                        {
                             return Redirect(returnUrl);
+                        }
+                        return RedirectToAction("Index", "Produto", new { area = "Administrativo" });
                     }
                 }
                 else
                 {
-                    ModelState.AddModelError("","Usuário não localizado");
+                    ModelState.AddModelError("", "Usuário não localizado");
                 }
             }
 
@@ -57,11 +59,11 @@ namespace Quiron.LojaVirtual.Web.Controllers
             return View(new Administrador());
         }
 
-        public ActionResult Logoff() 
-        { 
-            FormsAuthentication.SignOut(); 
-            return RedirectToAction("ListaProdutos", "Vitrine"); 
-        } 
+        public ActionResult Logoff()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("ListaProdutos", "Vitrine");
+        }
 
     }
 }
