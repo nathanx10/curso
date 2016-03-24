@@ -32,14 +32,14 @@ namespace Quiron.LojaVirtual.Web.Controllers
         {
             Carrinho carrinho = (Carrinho)Session["Carrinho"];
 
-            if(carrinho == null)
+            if (carrinho == null)
             {
                 carrinho = new Carrinho();
                 Session["Carrinho"] = carrinho;
             }
 
             return carrinho;
-            
+
         }
 
         public RedirectToRouteResult Remover(int produtoId, string returnUrl)
