@@ -14,7 +14,7 @@ namespace Quiron.LojaVirtual.Web.Controllers
     {
         private ProdutosRepositorio _repositorio;
 
-        public RedirectToRouteResult Adicionar(int produtoId, string returnUrl)
+        public RedirectToRouteResult Adicionar(Carrinho carrinho, int produtoId, string returnUrl)
         {
             _repositorio = new ProdutosRepositorio();
 
@@ -22,27 +22,28 @@ namespace Quiron.LojaVirtual.Web.Controllers
 
             if(produto != null)
             {
-                ObterCarrinho().AdicionarItem(produto, 1);
+                carrinho.AdicionarItem(produto, 1);
+                //ObterCarrinho().AdicionarItem(produto, 1);
             }
 
             return RedirectToAction("Index", new { returnUrl });
         }
 
-        private Carrinho ObterCarrinho()
-        {
-            Carrinho carrinho = (Carrinho)Session["Carrinho"];
+        //private Carrinho ObterCarrinho()
+        //{
+        //    Carrinho carrinho = (Carrinho)Session["Carrinho"];
 
-            if (carrinho == null)
-            {
-                carrinho = new Carrinho();
-                Session["Carrinho"] = carrinho;
-            }
+        //    if (carrinho == null)
+        //    {
+        //        carrinho = new Carrinho();
+        //        Session["Carrinho"] = carrinho;
+        //    }
 
-            return carrinho;
+        //    return carrinho;
 
-        }
+        //}
 
-        public RedirectToRouteResult Remover(int produtoId, string returnUrl)
+        public RedirectToRouteResult Remover(Carrinho carrinho, int produtoId, string returnUrl)
         {
             _repositorio = new ProdutosRepositorio();
 
@@ -50,24 +51,24 @@ namespace Quiron.LojaVirtual.Web.Controllers
 
             if(produto != null)
             {
-                ObterCarrinho().RemoverItem(produto);
+                carrinho.RemoverItem(produto);
             }
 
             return RedirectToAction("Index", new { returnUrl });
         }
 
-        public ViewResult Index(string returnUrl)
+        public ViewResult Index(Carrinho carrinho, string returnUrl)
         {
             return View(new CarrinhoViewModel
                 {
-                    Carrinho = ObterCarrinho(),
+                    Carrinho = carrinho,
                     ReturnUrl = returnUrl
                 });
         }
 
-        public PartialViewResult Resumo()
+        public PartialViewResult Resumo(Carrinho carrinho)
         {
-            Carrinho carrinho = ObterCarrinho();
+            //Carrinho carrinho = ObterCarrinho();
             return PartialView( carrinho);
         }
 
@@ -77,9 +78,9 @@ namespace Quiron.LojaVirtual.Web.Controllers
         }
 
         [HttpPost]
-        public ViewResult FecharPedido(Pedido pedido)
+        public ViewResult FecharPedido(Carrinho carrinho, Pedido pedido)
         {
-            Carrinho carrinho = ObterCarrinho();
+            //Carrinho carrinho = ObterCarrinho();
 
             EmailConfiguracoes email = new EmailConfiguracoes
             {
