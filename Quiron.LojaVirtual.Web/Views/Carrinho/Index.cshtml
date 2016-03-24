@@ -6,10 +6,9 @@
 <h2>Seu Carrinho</h2>
 
 <style>
-    #carrinhoTable td{
+    #carrinhoTable td {
         vertical-align: middle;
     }
-
 </style>
 <table id="carrinhoTable" class="table">
     <thead>
@@ -24,16 +23,26 @@
         @foreach (var item in Model.Carrinho.ItensCarrinho)
         {
             <tr>
-                <td class="text-center">@item.Quantidade</td>
+                @*<td class="text-center">@item.Quantidade</td>*@
                 <td class="text-center">@item.Produto.Nome</td>
                 <td class="text-right">@item.Produto.Preco.ToString("C")</td>
                 <td class="text-right">@((item.Produto.Preco * item.Quantidade).ToString("c"))</td>
-
                 <td>
-                    @using(Html.BeginForm("Remover", "Carrinho"))
+                    @using (Html.BeginForm("Adicionar", "Carrinho"))
                     {
                         @Html.Hidden("ProdutoId", item.Produto.ProdutoId)
                         @Html.HiddenFor(x=>x.ReturnUrl)
+
+                        @Html.TextBox("quantidade", item.Quantidade, new {@class="quantidade-textobox", @type="number", min="1", max="10"} )
+                        <input type="submit" value="Atualizar" class="btn btn-sm btn-danger" />
+                    }
+                </td>
+
+                <td>
+                    @using (Html.BeginForm("Remover", "Carrinho"))
+                    {
+                        @Html.Hidden("ProdutoId", item.Produto.ProdutoId)
+                        @Html.HiddenFor(x => x.ReturnUrl)
                         <input class="btn btn-sm btn-warning" type="submit" value="Remover" />
                     }
                 </td>
@@ -52,6 +61,6 @@
 <div class="text-center">
     <a class="btn btn-primary" href="@Model.ReturnUrl">Continuar comprando</a>
 
-    @Html.ActionLink("Fechar o pedido", "FecharPedido", "Carrinho", new {@class = "btn btn-primary" })
+    @Html.ActionLink("Fechar o pedido", "FecharPedido", "Carrinho", new { @class = "btn btn-primary" })
 </div>
 

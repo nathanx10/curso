@@ -21,6 +21,7 @@
     {
         <div class="pull-right">
             @Html.HiddenFor(x => x.ProdutoId)
+            @Html.Hidden("quantidade", 1)
             @Html.Hidden("returnUrl", Request.Url.PathAndQuery) @*retorna a url atual*@ 
 
 
