@@ -64,6 +64,16 @@ namespace Quiron.LojaVirtual.Web.Controllers
             return View(model);
         }
 
+        [Route("DetalhesProduto/{id}/{produto}")]
+        public ViewResult Detalhes(int id)
+        {
+            _repositorio = new ProdutosRepositorio();
+
+            Produto produto = _repositorio.ObterProduto(id);
+
+            return View(produto);
+        }
+
 
         [Route("Vitrine/ObterImagem/{produtoId}")]
         public FileContentResult ObterImagem(int produtoId)
